@@ -24,6 +24,9 @@ export default class NewClass extends cc.Component {
     @property(cc.Node)
     btnGetShareInfo: cc.Node = null;
 
+    @property(cc.Node)
+    btnShowMessage: cc.Node = null;
+
     @property(cc.Sprite)
     head: cc.Sprite = null;
 
@@ -39,8 +42,12 @@ export default class NewClass extends cc.Component {
         this.btnGetWerunData.on('click', this._onBtnGetWerunData, this);
         this.btnShare.on('click', this._onBtnShareClick, this);
         this.btnGetShareInfo.on('click', this._onBtnGetShareInfo, this);
+        this.btnShowMessage.on('click', this._onBtnShowMessage, this);
 
-        WxTool.setOnShowCall(function(scene, query, shareTicket, referrerInfo) {
+        // test code
+        this._onBtnGetUserInfoClick();
+
+        if(WxTool.isWx()) WxTool.setOnShowCall(function(scene, query, shareTicket, referrerInfo) {
             cc.log(query);
         });
     }
@@ -55,6 +62,7 @@ export default class NewClass extends cc.Component {
         this.btnGetUserInfo.targetOff(this);
         this.btnGetWerunData.targetOff(this);
         this.btnShare.targetOff(this);
+        this.btnShowMessage.targetOff(this);
     }
 
     private _showUserInfo(): void {
@@ -192,6 +200,14 @@ export default class NewClass extends cc.Component {
     private _onBtnGetShareInfo(): void {
         let res = wx.getLaunchOptionsSync();
         cc.log(res);
+    }
+
+    private _onBtnShowMessage(): void {
+        wx.showToast({
+            title: '弹消息测试',
+            icon: 'success',
+            duration: 2000
+        })
     }
 
     // -------------------------------------------------------

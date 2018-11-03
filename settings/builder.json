@@ -37,7 +37,7 @@
   "title": "wechat-test",
   "webOrientation": "auto",
   "wechatgame": {
-    "REMOTE_SERVER_ROOT": "http://192.168.191.1",
+    "REMOTE_SERVER_ROOT": "http://www.wtarr.club/wechat-test-server",
     "appid": "wxa29602f8b4373915",
     "isSubdomain": false,
     "orientation": "landscape",
